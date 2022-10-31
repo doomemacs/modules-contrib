@@ -1,0 +1,39 @@
+;;; .doomrc --- doom runtime config -*- mode: emacs-lisp; lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+(require 'doom) ; be silent, byte-compiler
+
+(after! doom-cli-ci
+  ;;; Commit linter types
+  (add-to-list 'doom-ci-commit-types 'module)
+  (add-to-list 'doom-ci-commit-scopeless-types 'module)
+  ;;; Commit linter scopes
+  (add-to-list 'doom-ci-commit-scopes #'ci-check-module-scope))
+
+(after! doom-cli-make
+  ;;; Codeowners
+  (dolist (path (doom-module-load-path (dir!)))
+    ;; I will be the default owner for everything in the repo unless a later
+    ;; match takes precedence.
+    (add-to-list 'doom-make-codeowners "# The default owner(s) unless another takes precedence")
+    (add-to-list 'doom-make-codeowners '("*" . "@doomemacs/maintainers"))
+    ;; Module maintainers (see https://git.doomemacs.org/teams)
+    (save-match-data
+      (add-to-list 'doom-make-codeowners "# Module maintainers")
+      (when (string-match "/modules/\\([^/]+\\)/\\([^/]+\\)/$" path)
+        (push (cons (substring (match-string 0 path) 1)
+                    (format "@doomemacs/%s-%s"
+                            (match-string 1 path)
+                            (match-string 2 path)))
+              doom-make-codeowners)))))
+
+
+;;; Helpers
+(defun ci-check-module-scope (scope _plist)
+  "Only allow :CATEGORY or MODULE scopes if they actually exist."
+  (doom-glob (dir!) "modules" (if (string-prefix-p ":" scope)
+                                  (format "%s" (substring scope 1))
+                                (format "*/%s" scope))))
+
+(provide 'cli)
+;;; cli.el ends here
