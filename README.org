@@ -1,9 +1,0 @@
-#+title:    Doom Emacs - Community Modules
-#+subtitle: The repository for user-contributed modules
-
-In the future, this repository will hold Doom's community-maintained module
-library (an optional extension to [[https://git.doomemacs.org/modules][Doom's official one]]). It won't be as carefully
-curated or supported, but will accept a wider range of functionality. Users will
-be able to pull it in from their ~doom!~ blocks.
-
-For now, it is simply a placeholder.
