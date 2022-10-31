@@ -6,7 +6,7 @@
 
 # Doom Emacs Community Modules
 
-![Made with Doom Emacs](https://img.shields.io/github/tag/doomemacs/modules.svg?style=flat-square&label=release&color=58839b) ![Latest commit](https://img.shields.io/github/last-commit/doomemacs/modules/master?style=flat-square) ![Build status: master](https://img.shields.io/github/workflow/status/doomemacs/modules/CI/master?style=flat-square)
+![Latest release](https://img.shields.io/github/tag/doomemacs/contrib-modules.svg?style=flat-square&label=release&color=58839b) ![Latest commit](https://img.shields.io/github/last-commit/doomemacs/contrib-modules/master?style=flat-square) ![Build status: master](https://img.shields.io/github/workflow/status/doomemacs/contrib-modules/CI/master?style=flat-square)
 
 [Install](#install) • [Update](#update) • [Documentation] • [Changelog] • [Community]
 
@@ -93,8 +93,8 @@ version string (e.g. a partial version string: `v22.11` or full one:
 # `TODO `Contribute
 
 
-[Changelog]: https://docs.doomemacs.org/-/changelog
+[Changelog]: https://docs.doomemacs.org/contrib-modules/changelog
 [Community]: https://docs.doomemacs.org/-/community
-[discord]: https://discord.gg/qvGgnVx
+[discord]: https://doomemacs.org/discord
 [discourse]: https://discourse.doomemacs.org
-[documentation]: docs/index.org
+[documentation]: https://docs.doomemacs.org/contrib-modules
