@@ -1,100 +1,84 @@
-> :warning: **Be aware that this repository is a work-in-progress.** Until Doom
-> Emacs v3.0 is released, some links may be broken and documentation may reflect
-> unreleased features and behavior.
+> [!WARNING]
+> **This repository is a work-in-progress.** Until Doom Emacs v3.0 is released,
+> links may be broken and documentation may reflect unreleased features and
+> behavior.
 
 <div align="center">
 
 # Doom Emacs Community Modules
 
-![Latest release](https://img.shields.io/github/tag/doomemacs/contrib-modules.svg?style=flat-square&label=release&color=58839b) ![Latest commit](https://img.shields.io/github/last-commit/doomemacs/contrib-modules/master?style=flat-square) ![Build status: master](https://img.shields.io/github/workflow/status/doomemacs/contrib-modules/CI/master?style=flat-square)
-
-[Install](#install) • [Update](#update) • [Documentation] • [Changelog] • [Community]
+![Latest release](https://img.shields.io/github/tag/doomemacs/modules-contrib.svg?style=flat-square&label=release&color=58839b)
+![Minimum supported version of Doom](https://img.shields.io/badge/Doom-v3.0.0+-blue.svg?style=flat-square)
+![Minimum supported versions of Emacs](https://img.shields.io/badge/Emacs-v29.1+-blueviolet.svg?style=flat-square&logo=GNU%20Emacs&logoColor=white) &nbsp; 
+[![Discord Server](https://img.shields.io/discord/406534637242810369?color=738adb&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://doomemacs.org/discord)
+[![Github Discussions](https://img.shields.io/github/discussions/doomemacs/community?style=flat-square&color=9cf&label=Discuss&logo=Github)](https://doomemacs.org/discuss)
 
 </div>
 
-# Introduction
+This module library houses modules for [Doom Emacs](https://doomemacs.org)
+submitted and maintained by its community, and can sometimes second as a staging
+ground for official modules. Unlike [Doom's official module
+library](https://git.doomemacs.org/modules), the criteria for modules here is
+more relaxed and subject to less quality control by Doom's author, but in
+exchange covers more features and use-cases.
 
-This is a library of [Doom Emacs](https://doomemacs.org) modules submitted and
-maintained by its community. Unlike [Doom's official module
-library](https://git.doomemacs.org/modules), the criteria for these modules is
-more relaxed and subject to fewer quality checks by Doom's author, but in
-exchange cover a larger spectrum of features and use-cases.
+> [!IMPORTANT]
+> Each module possesses their own documentation, accessible online at
+> https://docs.doomemacs.org/modules-contrib, or within Doom via `M-x
+> doom/help-modules` (or `M-x +lookup/documentation` while your cursor is on a
+> module's name in `$DOOMDIR/init.el`).
 
-Each module has their own documentation, accessible in Doom via `M-x
-doom/help-modules` or online at https://docs.doomemacs.org/-/contrib-modules:
 
 # Install
 
-## Before Doom v3.0
+Doom core v3.0 is not released yet, so this module library must be cloned and
+activate manually.
 
-1. Clone this repository locally:
-   ```sh
-   $ mkdir -p ~/.doom.d/repos/contrib-modules
-   $ git clone https://github.com/doomemacs/contrib-modules ~/.doom.d/repos/contrib-modules
-   ```
+1.  Clone this repository locally:
+    
+    ```sh
+    $ cd ~/.config/doom   # assuming your $DOOMDIR lives here
+    $ mkdir -p sources
+    $ git clone https://github.com/doomemacs/modules-contrib sources/doom++
+    ```
 
-2. Add the path to its `modules/` directory to `doom-modules-load-path` in `$DOOMDIR/init.el`:
-   ```emacs-lisp
-   ;;; in $DOOMDIR/init.el
-   (add-to-list 'doom-modules-load-path (expand-file-name "repos/contrib-modules/" doom-user-dir))
-   ```
+2.  Add the path to its `modules/` sub-directory to `doom-modules-load-path` in
+    `$DOOMDIR/init.el`:
+    
+    ```elisp
+    ;;; in $DOOMDIR/init.el
+    (add-to-list 'doom-modules-load-path (expand-file-name "sources/doom++/modules/" doom-user-dir) t)
+    ```
+    
+    NOTE: Order dictates priority in `doom-modules-load-path`.
 
-3. Activate modules contained in this library like normal. For example, to
-   enable this library's `:editor meow` module:
-   ```emacs-lisp
-   (doom! ...
-   
-          :editor
-          meow
-          
-          ...)
-   ```
+3.  Activate modules contained in this library like normal. For example, to
+    enable this library's `:editor meow` module:
+    
+    ```elisp
+    (doom! ...
+           :editor
+           meow
+           ...)
+    ```
 
-4. Run `$ doom sync` to ensure your changes take effect.
-
-## After Doom v3.0
-
-1. Register it as a module library from within your `doom!` block, like so:
-   ```emacs-lisp
-   ;;; in $DOOMDIR/init.el
-   (doom! (modules :repo "doomemacs/contrib-modules")
-          ...)
-   ```
-
-2. Activate modules contained in this library like normal. For example, to
-   enable this library's `:editor meow` module:
-   ```emacs-lisp
-   (doom! (modules :repo "doomemacs/contrib-modules")
-   
-          :editor
-          meow
-          
-          ...)
-   ```
-   
-   If two libraries have the same module, the order of your `modules`
-   declaration dictates precedence (from highest to lowest). The first matching
-   module will be used.
-
-3. Run `$ doom sync` to ensure your changes take effect. 
+4.  Run `$ doom sync` and restart Emacs.
 
 
 # Update
 
-- Run `$ doom upgrade` to update Doom and your module libraries.
-- Run `$ doom upgrade --modules` to only update your module libraries.
-- Run `$ doom upgrade --modules doomemacs/contrib-modules` to update only one.
+`doom upgrade` will not currently update your module library, so it must be
+pulled manually before hand:
 
-Module libraries can be pinned with `:pin "REF"`, where REF is a commit or a
-version string (e.g. a partial version string: `v22.11` or full one:
-`v22.11.02`).
-
-
-# `TODO `Contribute
+```sh
+$ git pull -C ~/.config/doom/sources/modules-contrib
+$ doom upgrade
+```
 
 
-[Changelog]: https://docs.doomemacs.org/contrib-modules/changelog
-[Community]: https://docs.doomemacs.org/-/community
-[discord]: https://doomemacs.org/discord
-[discourse]: https://discourse.doomemacs.org
-[documentation]: https://docs.doomemacs.org/contrib-modules
+# `TODO` Resources
+
+
+# `TODO` Contribute
+
+
