@@ -36,7 +36,7 @@ doom/help-modules` or online at https://docs.doomemacs.org/-/contrib-modules:
 2. Add the path to its `modules/` directory to `doom-modules-load-path` in `$DOOMDIR/init.el`:
    ```emacs-lisp
    ;;; in $DOOMDIR/init.el
-   (add-to-list 'doom-modules-load-path (expand-file-name "repos/contrib-modules/" doom-user-dir)
+   (add-to-list 'doom-modules-load-path (expand-file-name "repos/contrib-modules/" doom-user-dir))
    ```
 
 3. Activate modules contained in this library like normal. For example, to
@@ -50,7 +50,7 @@ doom/help-modules` or online at https://docs.doomemacs.org/-/contrib-modules:
           ...)
    ```
 
-4. Run `doom sync` to ensure your changes take effect.
+4. Run `$ doom sync` to ensure your changes take effect.
 
 ## After Doom v3.0
 
@@ -76,7 +76,7 @@ doom/help-modules` or online at https://docs.doomemacs.org/-/contrib-modules:
    declaration dictates precedence (from highest to lowest). The first matching
    module will be used.
 
-3. Run `doom sync` to ensure your changes take effect. 
+3. Run `$ doom sync` to ensure your changes take effect. 
 
 
 # Update
