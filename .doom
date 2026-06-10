@@ -42,7 +42,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.")
                                   (match-string 2 path)))))))
  (profiles
   (test
-   (root "test/")
+   (root . "test/")
    (doom
     (sources doom doom++)
     (modules :doom (cli +ci +buttercup))
