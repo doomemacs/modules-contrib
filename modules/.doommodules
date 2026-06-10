@@ -1,0 +1,8 @@
+;; -*- mode: lisp-data -*-
+"3.0.0"
+((name . doom++)
+ (requires
+  (emacs ">=29.1")
+  (doom ">=2.2.0"))
+ (obsolete
+  ))
